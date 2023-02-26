@@ -1,32 +1,34 @@
 import {Injectable} from "@nestjs/common";
 import {CreateReportDto} from "./dto/create-report.dto";
+import {Report} from "./schemas/report.schema";
+import {Model} from "mongoose";
+import {InjectModel} from "@nestjs/mongoose";
+import {UpdateReportDto} from "./dto/update-report.dto";
 
 @Injectable()
 export class ReportsService {
-    private reports = []
 
-    getAll() {
-        return this.reports
+    constructor(@InjectModel(Report.name) private reportModel: Model<Report>) {
     }
 
-    getById(id: string) {
-        return this.reports.find(report => report.id === id)
+    async getAll(): Promise<Report[]> {
+        return this.reportModel.find().exec()
     }
 
-    create(reportDto: CreateReportDto) {
-        this.reports.push({
-            id: Date.now().toString(),
-            ...reportDto
-        })
+    async getById(id: string): Promise<Report> {
+        return this.reportModel.findById(id).exec()
     }
 
-    update(id: string, report) {
-        const index = this.reports.findIndex(report => report.id === id)
-        this.reports[index] = report
+    async create(reportDto: CreateReportDto): Promise<Report> {
+        const newReport = new this.reportModel(reportDto)
+        return newReport.save()
     }
 
-    delete(id: string) {
-        const index = this.reports.findIndex(report => report.id === id)
-        this.reports.splice(index, 1)
+    async update(id: string, reportDto: UpdateReportDto): Promise<Report> {
+        return this.reportModel.findByIdAndUpdate(id, reportDto, {new: true}).exec()
+    }
+
+    async remove(id: string): Promise<Report> {
+        return this.reportModel.findByIdAndRemove(id).exec()
     }
 }

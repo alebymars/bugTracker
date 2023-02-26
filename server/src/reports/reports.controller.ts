@@ -13,6 +13,7 @@ import {
 import { CreateReportDto } from './dto/create-report.dto';
 import { UpdateReportDto } from './dto/update-report.dto';
 import { ReportsService } from './reports.service';
+import {Report} from "./schemas/report.schema";
 
 @Controller('reports')
 export class ReportsController {
@@ -21,27 +22,27 @@ export class ReportsController {
   @Get()
   //   @Redirect('https://google.com', 301)
   //   @HttpCode(HttpStatus.CREATED)
-  getAll() {
+  getAll(): Promise<Report[]> {
     return this.reportsService.getAll();
   }
 
   @Get(':id')
-  getOne(@Param('id') id) {
+  getOne(@Param('id') id): Promise<Report> {
     return this.reportsService.getById(id);
   }
 
   @Post()
-  create(@Body() createReportDto: CreateReportDto) {
+  create(@Body() createReportDto: CreateReportDto): Promise<Report> {
     return this.reportsService.create(createReportDto)
   }
 
   @Delete(':id')
-  remove(@Param('id') id) {
-    return this.reportsService.delete(id)
+  remove(@Param('id') id): Promise<Report> {
+    return this.reportsService.remove(id)
   }
 
   @Put(':id')
-  update(@Body() updateReportDto: UpdateReportDto, @Param('id') id: string) {
+  update(@Body() updateReportDto: UpdateReportDto, @Param('id') id: string): Promise<Report>  {
     return this.reportsService.update(id, updateReportDto)
   }
 }
