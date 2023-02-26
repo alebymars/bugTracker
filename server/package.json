@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "BugTracker server",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alebymars/bugTracker.git"
+  },
+  "author": "alebymars",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alebymars/bugTracker/issues"
+  },
+  "homepage": "https://github.com/alebymars/bugTracker#readme"
+}
