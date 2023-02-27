@@ -1,48 +1,48 @@
 import {
-  Controller,
-  Get,
-  Param,
-  Post,
-  Delete,
-  Put,
-  Body,
-  //   Redirect,
-  //   HttpCode,
-  //   HttpStatus,
+    Controller,
+    Get,
+    Param,
+    Post,
+    Delete,
+    Put,
+    Body,
 } from '@nestjs/common';
-import { CreateReportDto } from './dto/create-report.dto';
-import { UpdateReportDto } from './dto/update-report.dto';
-import { ReportsService } from './reports.service';
+import {CreateReportDto} from './dto/create-report.dto';
+import {UpdateReportDto} from './dto/update-report.dto';
+import {ReportsService} from './reports.service';
 import {Report} from "./schemas/report.schema";
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags("Reports")
 @Controller('reports')
 export class ReportsController {
-  constructor(private readonly reportsService: ReportsService) {
-  }
-  @Get()
-  //   @Redirect('https://google.com', 301)
-  //   @HttpCode(HttpStatus.CREATED)
-  getAll(): Promise<Report[]> {
-    return this.reportsService.getAll();
-  }
+    constructor(private readonly reportsService: ReportsService) {
+    }
 
-  @Get(':id')
-  getOne(@Param('id') id): Promise<Report> {
-    return this.reportsService.getById(id);
-  }
+    @Get()
+    //   @Redirect('https://google.com', 301)
+    //   @HttpCode(HttpStatus.CREATED)
+    getAll(): Promise<Report[]> {
+        return this.reportsService.getAll();
+    }
 
-  @Post()
-  create(@Body() createReportDto: CreateReportDto): Promise<Report> {
-    return this.reportsService.create(createReportDto)
-  }
+    @Get(':id')
+    getOne(@Param('id') id): Promise<Report> {
+        return this.reportsService.getById(id);
+    }
 
-  @Delete(':id')
-  remove(@Param('id') id): Promise<Report> {
-    return this.reportsService.remove(id)
-  }
+    @Post()
+    create(@Body() createReportDto: CreateReportDto): Promise<Report> {
+        return this.reportsService.create(createReportDto)
+    }
 
-  @Put(':id')
-  update(@Body() updateReportDto: UpdateReportDto, @Param('id') id: string): Promise<Report>  {
-    return this.reportsService.update(id, updateReportDto)
-  }
+    @Delete(':id')
+    remove(@Param('id') id): Promise<Report> {
+        return this.reportsService.remove(id)
+    }
+
+    @Put(':id')
+    update(@Body() updateReportDto: UpdateReportDto, @Param('id') id: string): Promise<Report> {
+        return this.reportsService.update(id, updateReportDto)
+    }
 }
