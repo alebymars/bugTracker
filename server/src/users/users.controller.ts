@@ -23,7 +23,7 @@ export class UsersController {
 
     @Get()
     @ApiOperation({ summary: "Get info all users" })
-    @UseGuards(AuthGuard("api-key"))
+    // @UseGuards(AuthGuard("api-key"))
     getAll(): Promise<User[]> {
         return this.usersService.getAll();
     }
@@ -39,7 +39,7 @@ export class UsersController {
     // @UseGuards(AuthGuard("api-key"))
     @ApiOperation({ summary: "Create user" })
     create(@Body() createUserDto: CreateUserDto): Promise<User> {
-        console.log(createUserDto)
+        // console.log(createUserDto)
         return this.usersService.create(createUserDto)
     }
 
