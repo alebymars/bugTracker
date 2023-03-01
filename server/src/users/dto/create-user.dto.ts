@@ -1,6 +1,6 @@
 export class CreateUserDto {
     readonly email: string;
-    readonly password: string;
+    password: string;
     readonly isActivated: boolean;
     readonly activationLink: string;
     readonly avatar: string;

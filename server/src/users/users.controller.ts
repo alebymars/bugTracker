@@ -39,6 +39,7 @@ export class UsersController {
     // @UseGuards(AuthGuard("api-key"))
     @ApiOperation({ summary: "Create user" })
     create(@Body() createUserDto: CreateUserDto): Promise<User> {
+        console.log(createUserDto)
         return this.usersService.create(createUserDto)
     }
 
