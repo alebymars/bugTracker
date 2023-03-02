@@ -8,6 +8,8 @@ import {AuthorizationModule} from './authorization/authorization.module';
 import {AuthModule} from './auth/auth.module';
 import {TokenModule} from './token/token.module';
 import {JwtService} from "@nestjs/jwt";
+import {JwtStrategy} from "./strategy";
+import {ConfigService} from "@nestjs/config";
 
 @Module({
     imports: [AuthorizationModule,
