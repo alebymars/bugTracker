@@ -5,5 +5,5 @@ export class CreateUserDto {
     readonly activationLink: string;
     readonly avatar: string;
     readonly role: string;
-    readonly token: string;
+    // readonly token: string;
 }
