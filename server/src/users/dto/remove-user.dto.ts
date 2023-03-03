@@ -1,11 +1,11 @@
 import {ApiProperty} from "@nestjs/swagger";
 
-export class CreateUserDto {
+export class RemoveUserDto {
     @ApiProperty()
     email: string;
 
-    @ApiProperty()
-    password: string;
+    // @ApiProperty()
+    // readonly password: string;
 
     @ApiProperty()
     isActivated: boolean;
