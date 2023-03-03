@@ -8,7 +8,7 @@ import {
     Body, UseGuards,
 } from '@nestjs/common';
 import {AuthGuard} from "@nestjs/passport";
-import {ApiOperation, ApiSecurity, ApiTags} from "@nestjs/swagger";
+import {ApiOperation, ApiResponse, ApiSecurity, ApiTags} from "@nestjs/swagger";
 import {UsersService} from "./users.service";
 import {User} from "./schemas/user.schemas";
 import {CreateUserDto} from "./dto/create-user.dto";
@@ -47,15 +47,20 @@ export class UsersController {
     // }
 
     @Delete(':id')
+    @ApiTags("Users")
+    @UseGuards(JwtAuthGuard)
+    @ApiResponse({status: 200, type: UpdateUserDto, description: 'User deleted successfully'})
     @ApiOperation({summary: "Delete user with id"})
     remove(@Param('id') id): Promise<User> {
         return this.usersService.remove(id)
     }
 
     @Put(':id')
+    @ApiTags("Users")
+    @ApiResponse({status: 200, type: UpdateUserDto, description: 'User updated successfully'})
     @UseGuards(JwtAuthGuard)
     @ApiOperation({summary: "Update user with id"})
-    update(@Body() updateUserDto: UpdateUserDto, @Param('id') id: string): Promise<User> {
+    update(@Body() updateUserDto: UpdateUserDto, @Param('id') id: string): Promise<UpdateUserDto> {
         return this.usersService.update(id, updateUserDto)
     }
 }
