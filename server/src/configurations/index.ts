@@ -1,4 +1,4 @@
-import * as process from "process";
+// import * as process from "process";
 
 export default () => ({
     secret_jwt: process.env.SECRET,

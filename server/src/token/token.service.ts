@@ -6,15 +6,15 @@ import {ConfigService} from "@nestjs/config";
 export class TokenService {
     constructor(
         private readonly jwtService: JwtService,
-        private readonly configService: ConfigService
+        // private readonly configService: ConfigService
     ) {
     }
 
     async generateJwtToken(user) {
         const payload = {user};
         return this.jwtService.sign(payload, {
-            secret: "VerySecretKey",
-            expiresIn: "1h"
+            secret: 'VeryHardSecret',
+            expiresIn: '1h'
         });
     }
 }

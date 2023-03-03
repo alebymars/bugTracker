@@ -2,20 +2,20 @@ import {ApiProperty} from "@nestjs/swagger";
 
 export class UpdateUserDto {
     @ApiProperty()
-    readonly email: string;
+    email: string;
+
+    // @ApiProperty()
+    // readonly password: string;
 
     @ApiProperty()
-    readonly password: string;
+    isActivated: boolean;
 
     @ApiProperty()
-    readonly isActivated: boolean;
+    activationLink: string;
 
     @ApiProperty()
-    readonly activationLink: string;
+    avatar: string;
 
     @ApiProperty()
-    readonly avatar: string;
-
-    @ApiProperty()
-    readonly role: string;
+    role: string;
 }

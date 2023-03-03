@@ -25,8 +25,8 @@ export class AuthController {
         return this.authService.loginUser(userDto)
     }
 
-    @Post("test")
     @UseGuards(JwtAuthGuard)
+    @Post("test")
     test() {
         return true
     }

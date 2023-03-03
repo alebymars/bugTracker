@@ -52,4 +52,9 @@ export class UsersService {
     async remove(id: string): Promise<User> {
         return this.userModel.findByIdAndRemove(id).exec();
     }
+
+    async publicUser(email: string) {
+        return this.userModel.findOne({email}).select('-password').exec();
+    }
+
 }
