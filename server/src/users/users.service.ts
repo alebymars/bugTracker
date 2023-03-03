@@ -5,7 +5,9 @@ import * as bcrypt from 'bcrypt';
 import {CreateUserDto} from "./dto/create-user.dto";
 import {UpdateUserDto} from "./dto/update-user.dto";
 import {User} from "./schemas/user.schemas";
-import {AppError} from "../common/errors";
+import {AppError} from "../common/constants/errors";
+
+// import {AppError} from "../common/constants/errors";
 
 @Injectable()
 export class UsersService {
@@ -50,4 +52,9 @@ export class UsersService {
     async remove(id: string): Promise<User> {
         return this.userModel.findByIdAndRemove(id).exec();
     }
+
+    async publicUser(email: string) {
+        return this.userModel.findOne({email}).select('-password').exec();
+    }
+
 }

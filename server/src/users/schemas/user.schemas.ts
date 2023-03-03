@@ -23,8 +23,8 @@ export class User {
     @Prop()
     role: string
 
-    @Prop()
-    token: string
+    // @Prop()
+    // token: string
 
 }
 
