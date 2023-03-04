@@ -8,6 +8,7 @@ export const {StoreProvider, useSelector, useDispatch} = createStore(
         user: {
             id: "",
             email: "",
+            role: "",
             profilePicture: "",
             isAuth: false,
             token: ""
