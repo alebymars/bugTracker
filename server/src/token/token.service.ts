@@ -14,7 +14,7 @@ export class TokenService {
         const payload = {user};
         return this.jwtService.sign(payload, {
             secret: 'VeryHardSecret',
-            expiresIn: '1h'
+            expiresIn: '24h'
         });
     }
 }

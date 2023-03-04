@@ -19,9 +19,9 @@ export class UsersService {
         return this.userModel.find().exec();
     }
 
-    async findOne(email: string) {
-        return this.userModel.find({email}).exec();
-    }
+    // async findOne(email: string) {
+    //     return this.userModel.find({email}).exec();
+    // }
 
     async getById(id: string): Promise<User> {
         return this.userModel.findById(id).exec()
@@ -53,7 +53,7 @@ export class UsersService {
         return this.userModel.findByIdAndRemove(id).exec();
     }
 
-    async publicUser(email: string) {
+    async publicUser(email: string): Promise<User> {
         return this.userModel.findOne({email}).select('-password').exec();
     }
 

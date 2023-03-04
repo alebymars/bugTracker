@@ -18,6 +18,10 @@ export class AuthService {
     async registerUsers(userDto: CreateUserDto): Promise<CreateUserDto> {
         const existUser = await this.usersService.findUserByEmail(userDto.email)
         if (existUser) throw new BadRequestException(AppError.USER_EXIST)
+        const emailRegexp = new RegExp(
+            /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i
+        )
+        if (!emailRegexp.test(userDto.email)) throw new BadRequestException(AppError.WRONG_DATA)
         return this.usersService.create(userDto)
     }
 
@@ -26,7 +30,10 @@ export class AuthService {
         if (!existUser) throw new BadRequestException(AppError.USER_NOT_EXIST)
         const validatePassword = await bcrypt.compare(userDto.password, existUser.password)
         if (!validatePassword) throw new BadRequestException(AppError.WRONG_DATA)
-        const token = await this.tokenService.generateJwtToken(userDto.email)
+        const token = await this.tokenService.generateJwtToken({
+            email: existUser.email,
+            role: existUser.role
+        })
         const user = await this.usersService.publicUser(userDto.email)
         return {...user, token}
     }
