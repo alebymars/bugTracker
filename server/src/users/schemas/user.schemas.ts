@@ -1,6 +1,7 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import {HydratedDocument} from 'mongoose';
 import {ApiProperty} from "@nestjs/swagger";
+import {IsEmail, IsNotEmpty} from "class-validator";
 
 export type UserDocument = HydratedDocument<User>;
 
@@ -8,10 +9,12 @@ export type UserDocument = HydratedDocument<User>;
 export class User {
     @Prop()
     @ApiProperty()
+    @IsEmail()
     email: string
 
     @ApiProperty()
     @Prop()
+    @IsNotEmpty()
     password: string
 
     @ApiProperty()
