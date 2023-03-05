@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch} from "../../store";
 import {setUser} from "../../store/actions";
 
@@ -41,7 +41,7 @@ const LogIn: React.FC = (props): React.ReactElement => {
 
             const data = await response.json();
             console.log("data", data);
-            
+
             const {token} = data;
             console.log("token", token);
 
@@ -61,6 +61,15 @@ const LogIn: React.FC = (props): React.ReactElement => {
             console.error(error);
         }
     };
+
+    useEffect(() => {
+        // получить profilePicture из data
+        const allData = JSON.stringify(userInfo);
+        Object.keys(userInfo).forEach((key, value) => {
+            console.log("key", key);
+            console.log("value", value);
+        });
+    }, [userInfo]);
 
 
     return (

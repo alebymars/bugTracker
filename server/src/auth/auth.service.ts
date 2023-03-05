@@ -35,6 +35,7 @@ export class AuthService {
             role: existUser.role
         })
         const user = await this.usersService.publicUser(userDto.email)
+        // console.log({...user, token})
         return {...user, token}
     }
 }
