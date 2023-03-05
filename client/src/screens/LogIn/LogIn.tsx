@@ -13,45 +13,36 @@ const LogIn: React.FC = (props): React.ReactElement => {
 
     const postLoginMethod = async () => {
         try {
-            // console.log("email", email);
-            // console.log("password", password);
-            const response = await fetch('http://localhost:3001/api/v1/auth/login', {
-                method: 'POST',
+            const response = await fetch("http://localhost:3001/api/v1/auth/login", {
+                method: "POST",
                 headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     email: email,
-                    password: password
+                    password: password,
                 }),
             });
 
-            // return fetch('http://localhost:3001/api/v1/auth/login', {
-            //     method: 'POST',
-            //     headers: {
-            //         Accept: 'application/json',
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //         email: email,
-            //         password: password
-            //     }),
-            // }).then(async (response) => await setAppState(await response.json()));
-
             const data = await response.json();
-            console.log("data", data);
+            // console.log("data", data);
 
             const {token} = data;
-            console.log("token", token);
+            // console.log("token", token);
+
+            const user = data["_doc"];
+            localStorage.setItem("user", JSON.stringify(user));
+
+            // console.log("user => ", user);
 
             if (data) {
                 setAppState(data);
                 dispatch(setUser({
-                    id: "data.user.id",
-                    email: email,
-                    role: "User",
-                    profilePicture: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y",
+                    id: user._id,
+                    email: user.email,
+                    role: user.role,
+                    profilePicture: user.avatar,
                     isAuth: true,
                     token: data.token,
                 }));
@@ -61,16 +52,6 @@ const LogIn: React.FC = (props): React.ReactElement => {
             console.error(error);
         }
     };
-
-    useEffect(() => {
-        // получить profilePicture из data
-        const allData = JSON.stringify(userInfo);
-        Object.keys(userInfo).forEach((key, value) => {
-            console.log("key", key);
-            console.log("value", value);
-        });
-    }, [userInfo]);
-
 
     return (
         <div>
@@ -83,6 +64,6 @@ const LogIn: React.FC = (props): React.ReactElement => {
             </p>
         </div>
     );
-}
+};
 
 export default LogIn;

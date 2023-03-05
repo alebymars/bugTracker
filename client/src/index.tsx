@@ -9,12 +9,14 @@ import {StoreProvider} from "./store";
 import LogIn from "./screens/LogIn/LogIn";
 import SignUp from "./screens/SignUp/SignUp";
 import {ErrorPage} from "./screens/ErrorPage/ErrorPage";
+import Profile from "./screens/Profile/Profile";
+import Header from "./components/Header/Header";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <div>BugTracker App</div>,
-        errorElement: <ErrorPage />,
+        element: <div><Header title={"Main"} /> BugTracker App</div>,
+        errorElement: <ErrorPage/>,
         // children: [
         //     {
         //         path: "/reports",
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/profile",
-        element: <div>Profile</div>,
+        element: <Profile/>,
     },
     {
         path: "/reports",
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
+    document.getElementById("root") as HTMLElement
 );
 
 root.render(
