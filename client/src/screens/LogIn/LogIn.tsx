@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch} from "../../store";
-import {setUser} from "../../store/actions";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "../../store";
+import { setUser } from "../../store/actions";
+import Header from "../../components/Header/Header";
 
 const LogIn: React.FC = (props): React.ReactElement => {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const LogIn: React.FC = (props): React.ReactElement => {
             const data = await response.json();
             // console.log("data", data);
 
-            const {token} = data;
+            const { token } = data;
             // console.log("token", token);
 
             const user = data["_doc"];
@@ -44,7 +45,7 @@ const LogIn: React.FC = (props): React.ReactElement => {
                     role: user.role,
                     profilePicture: user.avatar,
                     isAuth: true,
-                    token: data.token,
+                    token: token,
                 }));
                 setUserInfo(data);
             }
@@ -54,9 +55,17 @@ const LogIn: React.FC = (props): React.ReactElement => {
     };
 
     return (
-        <div>
-            <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
-            <input type="text" value={password} onChange={e => setPassword(e.target.value)}/>
+        <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            // justifyContent: "center",
+            height: "100vh",
+            width: "100vw",
+        }}>
+            <Header title={"LogIn"} />
+            <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+            <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
             <button onClick={postLoginMethod}>LogIn</button>
 
             <p>

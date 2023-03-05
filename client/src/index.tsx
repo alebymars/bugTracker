@@ -11,11 +11,12 @@ import SignUp from "./screens/SignUp/SignUp";
 import {ErrorPage} from "./screens/ErrorPage/ErrorPage";
 import Profile from "./screens/Profile/Profile";
 import Header from "./components/Header/Header";
+import Reports from "./screens/Reports";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <div><Header title={"Main"} /> BugTracker App</div>,
+        element: <Header title={"Main"} />,
         errorElement: <ErrorPage/>,
         // children: [
         //     {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/reports",
-        element: <div>Reports</div>,
+        element: <Reports />,
     },
     {
         path: "/products",
