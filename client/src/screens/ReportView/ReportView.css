@@ -1,0 +1,67 @@
+.reportView {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 65%;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #333333;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E1E3E6;
+}
+
+.reportSteps {
+    display: flex;
+    color: #E1E3E6;
+    margin: 5px;
+    padding: 3px;
+    font-weight: 400;
+}
+
+.reportBold {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0px;
+    padding: 5px 0px 5px 0;
+}
+
+.reportOrdinary {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 5px 0px 5px 0px;
+    padding: 0px;
+}
+
+.reportTitlePreview {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px;
+    padding: 0px;
+}
+
+.reportBasicInfo {
+    display: flex;
+    flex-direction: row;
+    font-weight: 400;
+    width: 100%;
+    margin: 5px 0px 0px 0px;
+    justify-content: space-between;
+}
+
+.reportBasicTitle {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+    padding: 0px;
+    color: #939393;
+}
+
+.reportBasicBody {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+    padding: 0px;
+    color: #71AAEB;
+}

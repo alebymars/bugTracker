@@ -45,6 +45,16 @@
     cursor: pointer;
 }
 
+.itemMenuActive {
+    margin: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #FFFFFF16;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
 .itemMenu:hover {
     background-color: #FFFFFF16;
 }

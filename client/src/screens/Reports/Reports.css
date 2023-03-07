@@ -1,38 +1,76 @@
 .main {
-  display: flex;
-  /* min-height: 100px; */
-  height: max-content;
-  /*background-color: burlywood;*/
+    display: flex;
+    /* min-height: 100px; */
+    height: max-content;
+    /*background-color: burlywood;*/
 }
 
 .reports {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 }
 
 .cardReport {
-  display: flex;
-  /*max-width: 80vw;*/
-  min-width: 50vw;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    display: flex;
+    /*max-width: 80vw;*/
+    min-width: 50vw;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+    background-color: #333333;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E1E3E6;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    cursor: default;
+    transition: all 0.3s ease;
 }
 
 p {
-  margin: 0px;
+    margin: 0px;
+    color: #E1E3E6;
+}
+
+.reportTitle {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #71aaeb;
+    padding: 0px;
+}
+
+.reportDatetime {
+    font-size: 12px;
+    font-weight: 500;
+    /*margin-top: 10px;*/
+    color: #E1E3E6;
+    padding: 0px;
+}
+
+.reportUsername {
+    font-size: 12px;
+    font-weight: 500;
+    /*margin-top: 10px;*/
+    color: #E1E3E6;
+    padding: 0px 0px 0px 10px;
+}
+
+.reportPriority {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #E1E3E6;
+    padding: 0px 0px 0px 10px;
 }
 
 .tags {
-  flex-direction: row;
-  display: flex;
-  /* padding: 10px; */
+    flex-direction: row;
+    display: flex;
+    font-size: 14px;
+    padding-top: 5px;
+    /* padding: 10px; */
 }

@@ -8,10 +8,10 @@ interface Props {
 
 const RequireAuth = (props: Props) => {
     const location = useLocation();
-    const token = useSelector(state => state.user.token);
+    // const token = useSelector(state => state.user.token);
     const user = useSelector(state => state.user);
 
-    console.log("token => ", token);
+    // console.log("token => ", token);
     console.log("user => ", user.isAuth);
 
     if (!user.isAuth) {

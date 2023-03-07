@@ -22,7 +22,11 @@ body {
     margin: 0;
     line-height: 1.5;
     color: #121212;
-    background-color: #333333;
+    background-color: #222222;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #E1E3E6;
 }
 
 #error-page {

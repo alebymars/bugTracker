@@ -1,9 +1,11 @@
-import {Link, Outlet} from "react-router-dom";
+import {Outlet, useLocation} from "react-router-dom";
 import {Header} from "../Header/Header";
 import SideBar from "../SideBar/SideBar";
-import "./Layout.css";
-import RequireAuth from "../../hoc/RequireAuth";
 import {useSelector} from "../../store";
+import "./Layout.css";
+import Home from "../../screens/Home/Home";
+
+// import RequireAuth from "../../hoc/RequireAuth";
 
 interface Props {
     title: string;
@@ -11,12 +13,14 @@ interface Props {
 
 const Layout = (props: Props) => {
     const userStore = useSelector(state => state.user);
+    const location = useLocation();
+    // console.log(location);
     return (
         <>
-            <Header title={props.title}/>
+            <Header/>
             <div className="layout">
-                {userStore.isAuth && <SideBar/>}
-                <Outlet/>
+                {userStore.isAuth && location.pathname !== "/" ? <SideBar/> : ""}
+                {location.pathname === "/" ? <Home/> : <Outlet/>}
             </div>
         </>
     );

@@ -8,10 +8,9 @@ import "./Header.css";
 import CustomLink from "../CustomLink/CustomLink";
 import {useAuth} from "../../hook/useAuth";
 import {useSelector} from "../../store";
+import {Link, Navigate, NavLink} from "react-router-dom";
 
-interface Props {
-    title: string;
-}
+interface Props {}
 
 const Header = (props: Props) => {
     const storeUser = useSelector(state => state.user);
@@ -26,41 +25,47 @@ const Header = (props: Props) => {
                     size="large"
                     edge="start"
                     color="inherit"
-                    aria-label="menu"
+                    // aria-label="menu"
                     sx={{mr: 2}}
                 >
-                    <BugReportIcon/>
+                    <Link to="/">
+                        <BugReportIcon/>
+                    </Link>
                 </IconButton>
                 <Typography variant="h6"
                             component="div" sx={{flexGrow: 1}}>
                     BugTracker
                 </Typography>
                 <CustomLink to="/">
-                    Home
+                    Главная
                 </CustomLink>
                 {storeUser.isAuth
                     ?
                     "" :
                     <CustomLink to="/signup">
-                        SignUp
+                        Создать аккаунт
                     </CustomLink>
                 }
                 {storeUser.isAuth
                     ?
                     <CustomLink to="/reports/">
-                        Reports
+                        Отчёты
                     </CustomLink> :
                     ""}
                 {storeUser.isAuth
                     ?
                     "" :
                     <CustomLink to="/login">
-                        LogIn
+                        Войти
                     </CustomLink>
                 }
                 {storeUser.isAuth
                     ?
-                    <Button onClick={logout} color="inherit">Выйти</Button> : ""
+                    // <NavLink onClick={logout} to={"/"}>
+                    //     Выйти
+                    // </NavLink> : ""
+                    <Button onClick={logout} style={{
+                        color: "#cccccc"}}>Выйти</Button> : ""
                 }
             </Toolbar>
         </AppBar>

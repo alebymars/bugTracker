@@ -49,6 +49,10 @@ export class Report {
     @Prop()
     @ApiProperty()
     os: string;
+
+    @Prop()
+    @ApiProperty()
+    date: Date;
 }
 
 export const ReportSchema = SchemaFactory.createForClass(Report)
