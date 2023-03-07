@@ -10,7 +10,7 @@ import LogIn from "./screens/LogIn/LogIn";
 import SignUp from "./screens/SignUp/SignUp";
 import {ErrorPage} from "./screens/ErrorPage/ErrorPage";
 import Profile from "./screens/Profile/Profile";
-import Reports from "./screens/Reports";
+import {Reports} from "./screens/Reports";
 import {Layout} from "./components/Layout/Layout";
 import ReportView from "./screens/ReportView/ReportView";
 import CreateReport from "./screens/CreateReport/CreateReport";
@@ -47,6 +47,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "reports",
+                // loader: () => import("./screens/Reports"),
                 element:
                     <RequireAuth>
                         <Reports/>

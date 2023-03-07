@@ -28,7 +28,7 @@ export function useAuth() {
             isAuth: false,
             token: "",
         }));
-        navigate("/");
+        navigate("/", {replace: true});
         return true;
     };
 

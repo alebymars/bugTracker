@@ -5,7 +5,7 @@ import "./Reports.css";
 import CustomLink from "../../components/CustomLink/CustomLink";
 import {setUser} from "../../store/actions";
 import {useAuth} from "../../hook/useAuth";
-import {Link} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 
 interface Props {
 
@@ -13,6 +13,40 @@ interface Props {
 
 const Reports = (props: Props) => {
     const dispatch = useDispatch();
+
+    const [searchParams, setSearchParams] = useSearchParams();
+    const reportQuery = searchParams.get("report") || "";
+    const latest = searchParams.get("latest") || "";
+
+    const startsFrom = latest ? 0 : 10;
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        const form = e.target;
+        const query = form.search.value;
+        const isLatest = form.latest.checked;
+
+        const params = new URLSearchParams();
+        if(query.length){
+            params.set("report", query);
+        }
+        if(isLatest){
+            params.set("latest", isLatest.toString());
+        }
+
+        setSearchParams(params);
+
+        // if(query.length){
+        //     setSearchParams({report: query});
+        // }
+        // if(isLatest){
+        //     setSearchParams({latest: isLatest});
+        // }
+
+        // setSearchParams({report: query});
+        // setSearchParams({latest: isLatest});
+    };
+
 
     const token = useSelector(state => state.user.token);
     const [reports, setReports] = useState<any>([]);
@@ -24,7 +58,7 @@ const Reports = (props: Props) => {
         const year = date.slice(0, 4);
         const time = date.slice(11, 16);
         return `${day}.${month}.${year} ${time}`;
-    }
+    };
 
 
     useLayoutEffect(() => {
@@ -52,8 +86,17 @@ const Reports = (props: Props) => {
 
     return (
         <div className="reports">
+            <form autoComplete="off" onSubmit={handleSubmit}>
+                <input type="search" name="search"/>
+                <input type="submit" value="search"/>
+                <label>
+                    <input type="checkbox" name="latest" />
+                </label>
+            </form>
             {/*<CustomLink to={"new"} children={"Create Report"}/>*/}
-            {reports.map((report: any) => {
+            {reports.filter(
+                (report: any) => report.title.toLowerCase().includes(reportQuery.toLowerCase())
+            ).map((report: any) => {
                 return (
                     <div className="cardReport" key={report._id}>
                         <Link to={`/reports/${report._id}`} className="reportTitle">{report.title}</Link>
@@ -101,4 +144,4 @@ const Reports = (props: Props) => {
     );
 };
 
-export default Reports;
+export {Reports};

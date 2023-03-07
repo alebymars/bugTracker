@@ -61,9 +61,9 @@ const ReportView = () => {
                         <div>
                             {reports.steps.map((item: any, index: any) => {
                                 return (
-                                    <ul key={index} className="reportSteps">
+                                    <p key={index} className="reportSteps">
                                         {index + 1}. {item}
-                                    </ul>
+                                    </p>
                                 );
                             })}
                         </div>
