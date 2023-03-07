@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "../../store";
-import { setUser } from "../../store/actions";
-import Header from "../../components/Header/Header";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useLocation} from "react-router-dom";
+import {useDispatch} from "../../store";
+import {setUser} from "../../store/actions";
 
 const LogIn: React.FC = (props): React.ReactElement => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const fromPage = location.state?.from?.pathname || "/";
 
     const [userInfo, setUserInfo] = useState("");
     const [appState, setAppState] = useState("");
@@ -29,7 +32,7 @@ const LogIn: React.FC = (props): React.ReactElement => {
             const data = await response.json();
             // console.log("data", data);
 
-            const { token } = data;
+            const {token} = data;
             // console.log("token", token);
 
             const user = data["_doc"];
@@ -48,6 +51,7 @@ const LogIn: React.FC = (props): React.ReactElement => {
                     token: token,
                 }));
                 setUserInfo(data);
+                navigate("/reports");
             }
         } catch (error) {
             console.error(error);
@@ -63,14 +67,14 @@ const LogIn: React.FC = (props): React.ReactElement => {
             height: "100vh",
             width: "100vw",
         }}>
-            <Header title={"LogIn"} />
-            <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-            <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
+            {/*<Header title={"LogIn"} />*/}
+            <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+            <input type="text" value={password} onChange={e => setPassword(e.target.value)}/>
             <button onClick={postLoginMethod}>LogIn</button>
-
-            <p>
-                {JSON.stringify(appState)}
-            </p>
+            {fromPage}
+            {/*<p>*/}
+            {/*    {JSON.stringify(appState)}*/}
+            {/*</p>*/}
         </div>
     );
 };

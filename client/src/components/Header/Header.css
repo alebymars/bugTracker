@@ -1,0 +1,22 @@
+.appBar {
+    display: flex;
+    padding: 0 20px;
+    height: 60px;
+}
+
+a {
+    text-decoration: none;
+    padding: 20px;
+    align-items: center;
+    color: #828282;
+    font-size: 17px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    align-items: center;
+}
+
+.active {
+    text-decoration: none;
+    color: #E1E3E6;
+    cursor: default;
+}

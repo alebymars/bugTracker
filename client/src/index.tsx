@@ -4,46 +4,76 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
-import "./index.css";
+import "./styles.css";
 import {StoreProvider} from "./store";
 import LogIn from "./screens/LogIn/LogIn";
 import SignUp from "./screens/SignUp/SignUp";
 import {ErrorPage} from "./screens/ErrorPage/ErrorPage";
 import Profile from "./screens/Profile/Profile";
-import Header from "./components/Header/Header";
 import Reports from "./screens/Reports";
+import {Layout} from "./components/Layout/Layout";
+import ReportView from "./screens/ReportView/ReportView";
+import CreateReport from "./screens/CreateReport/CreateReport";
+import EditReport from "./screens/EditReport/EditReport";
+import RequireAuth from "./hoc/RequireAuth";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Header title={"Main"} />,
+        element: <Layout title={"Test"}/>,
         errorElement: <ErrorPage/>,
-        // children: [
-        //     {
-        //         path: "/reports",
-        //         element: <div>Reports</div>,
-        //     }
-        // ]
-    },
-    {
-        path: "/login",
-        element: <LogIn/>,
-    },
-    {
-        path: "/signup",
-        element: <SignUp/>,
-    },
-    {
-        path: "/profile",
-        element: <Profile/>,
-    },
-    {
-        path: "/reports",
-        element: <Reports />,
-    },
-    {
-        path: "/products",
-        element: <div>Products</div>,
+        children: [
+            {
+                path: "login",
+                element: <LogIn/>,
+            },
+            {
+                path: "signup",
+                element: <SignUp/>,
+            },
+            {
+                path: "profile",
+                element:
+                    <RequireAuth>
+                        <Profile/>
+                    </RequireAuth>,
+            },
+            {
+                path: "products",
+                element:
+                    <RequireAuth>
+                        <div>Products</div>
+                    </RequireAuth>,
+            },
+            {
+                path: "reports",
+                element:
+                    <RequireAuth>
+                        <Reports/>
+                    </RequireAuth>,
+            },
+            {
+                path: "reports/:id",
+                element:
+                    <RequireAuth>
+                        <ReportView/>
+                    </RequireAuth>,
+            },
+            {
+                path: "reports/:id/edit",
+                element:
+                    <RequireAuth>
+                        <EditReport/>
+                    </RequireAuth>,
+            },
+            {
+                path: "reports/new",
+                element:
+                    <RequireAuth>
+                        <CreateReport/>
+                    </RequireAuth>,
+            },
+        ]
     }
 ]);
 
