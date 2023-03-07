@@ -8,3 +8,5 @@ export const setUser = createAction<{
     isAuth: boolean;
     token: string;
 }>()("setUser");
+
+// export const setReports =

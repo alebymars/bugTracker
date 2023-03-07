@@ -25,25 +25,35 @@ const Reports = (props: Props) => {
                 "Authorization": `Bearer ${token}`,
             };
 
-            axios.get("http://localhost:3001/api/v1/reports", {headers}).then((response) => {
-                console.log("response => ", response.data);
-                setReports(response.data);
-            }).catch((error) => {
-                dispatch(setUser({
-                    id: "",
-                    email: "",
-                    role: "",
-                    profilePicture: "",
-                    isAuth: false,
-                    token: "",
-                }));
-                console.log("error => ", error);
-            });
+            // token && axios.get("http://localhost:3001/api/v1/reports", {headers}).then((response) => {
+            //     console.log("response => ", response.data);
+            //     setReports(response.data);
+            // }).catch((error) => {
+            //     dispatch(setUser({
+            //         id: "",
+            //         email: "",
+            //         role: "",
+            //         profilePicture: "",
+            //         isAuth: false,
+            //         token: "",
+            //     }));
+            //     console.log("error => ", error);
+            // });
+
+            token && fetch("http://localhost:3001/api/v1/reports", {
+                method: "GET",
+                headers: headers,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("data => ", data);
+                    setReports(data);
+                });
 
         } catch (error) {
             console.error(error);
         }
-    }, []);
+    }, [token]);
 
 
     return (

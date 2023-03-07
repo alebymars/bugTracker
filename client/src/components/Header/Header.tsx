@@ -15,6 +15,7 @@ interface Props {
 
 const Header = (props: Props) => {
     const storeUser = useSelector(state => state.user);
+    const {logout} = useAuth();
 
     return (
         <AppBar style={{
@@ -57,7 +58,10 @@ const Header = (props: Props) => {
                         LogIn
                     </CustomLink>
                 }
-                <Button onClick={useAuth().logout} color="inherit">Выйти</Button>
+                {storeUser.isAuth
+                    ?
+                    <Button onClick={logout} color="inherit">Выйти</Button> : ""
+                }
             </Toolbar>
         </AppBar>
     );
