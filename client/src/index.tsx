@@ -39,14 +39,14 @@ const router = createBrowserRouter([
                     </RequireAuth>,
             },
             {
-                path: "products",
+                path: "products/*",
                 element:
                     <RequireAuth>
                         <div>Products</div>
                     </RequireAuth>,
             },
             {
-                path: "reports",
+                path: "reports/*",
                 // loader: () => import("./screens/Reports"),
                 element:
                     <RequireAuth>
@@ -59,6 +59,15 @@ const router = createBrowserRouter([
                     <RequireAuth>
                         <ReportView/>
                     </RequireAuth>,
+                // children: [
+                //     {
+                //         path: "edit",
+                //         element:
+                //             <RequireAuth>
+                //                 <EditReport/>
+                //             </RequireAuth>,
+                //     }
+                // ]
             },
             {
                 path: "reports/:id/edit",

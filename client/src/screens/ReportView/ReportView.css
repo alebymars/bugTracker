@@ -63,5 +63,29 @@
     font-weight: 400;
     margin: 0px;
     padding: 0px;
+    color: #E1E3E6;
+}
+
+.reportBasicBodyLink {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0px;
+    padding: 0px;
     color: #71AAEB;
+}
+
+.reportBasicTags {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.reportBasicBgTag {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    background-color: #FFFFFF16;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    margin: 5px;
 }

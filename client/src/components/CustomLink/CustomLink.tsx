@@ -6,7 +6,10 @@ interface Props {
 }
 
 const CustomLink = (props: Props) => {
-    const match = useMatch(props.to);
+    const match = useMatch({
+        path: props.to,
+        end: props.to.length === 1,
+    });
     // console.log("match => ", match);
     return (
         <Link

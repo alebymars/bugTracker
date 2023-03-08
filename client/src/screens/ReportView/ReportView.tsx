@@ -52,10 +52,10 @@ const ReportView = () => {
                                     navigate(`/reports/${reports._id}/edit`);
                                 }}
                                 style={{
-                                color: "#cccccc",
-                                cursor: "pointer",
-                                fontSize: "25px"
-                            }}/>
+                                    color: "#cccccc",
+                                    cursor: "pointer",
+                                    fontSize: "25px"
+                                }}/>
                         </div>
                         <p className="reportBold">Шаги воспроизведения: </p>
                         <div>
@@ -72,36 +72,69 @@ const ReportView = () => {
                         <p className="reportBold">Ожидаемый результат: <p
                             className="reportOrdinary">{reports.expectedResult}</p></p>
                         {/*<p>Прикрепленные файлы: (soon...)</p>*/}
-                        <hr style={{borderColor: "#cccccc"}}/>
+                        <hr/>
                         <div
                             className="reportBasicInfo"
                         >
                             <p className="reportBasicTitle">Продукт:</p>
-                            <p className="reportBasicBody">{reports.product}</p>
+                            <p className="reportBasicBodyLink">{reports.product}</p>
                         </div>
                         <div
                             className="reportBasicInfo"
                         >
-                            <p className="reportBasicTitle">Устройство:</p>
-                            <p className="reportBasicBody">{reports.device}</p>
+                            <p className="reportBasicTitle">Платформа:</p>
+                            <p className="reportBasicBodyLink">{reports.platform}</p>
+                        </div>
+                        <div
+                            className="reportBasicInfo"
+                        >
+                            <p className="reportBasicTitle">Версия продукта:</p>
+                            <p className="reportBasicBodyLink">{reports.versionProduct}</p>
                         </div>
                         <div
                             className="reportBasicInfo"
                         >
                             <p className="reportBasicTitle">Версия ОС:</p>
-                            <p className="reportBasicBody">{reports.os}</p>
+                            <p className="reportBasicBodyLink">{reports.os}</p>
+                        </div>
+                        <div
+                            className="reportBasicInfo"
+                        >
+                            <p className="reportBasicTitle">Теги:</p>
+                            {/*<p className="reportBasicBody">{reports.tags}</p>*/}
+                            <div className="reportBasicTags">
+                                {reports.tags.map((tags: any) => {
+                                    return (
+                                        <p className="reportBasicBgTag">
+                                            <p className="reportBasicBodyLink">{tags}</p>
+                                        </p>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                        <div
+                            className="reportBasicInfo"
+                        >
+                            <p className="reportBasicTitle">Статус:</p>
+                            <p className="reportBasicBody">{reports.status}</p>
                         </div>
                         <div
                             className="reportBasicInfo"
                         >
                             <p className="reportBasicTitle">Тип проблемы:</p>
-                            <p className="reportBasicBody">{reports.issueType}</p>
+                            <p className="reportBasicBodyLink">{reports.issueType}</p>
                         </div>
                         <div
                             className="reportBasicInfo"
                         >
                             <p className="reportBasicTitle">Приоритет:</p>
                             <p className="reportBasicBody">{reports.priority}</p>
+                        </div>
+                        <div
+                            className="reportBasicInfo"
+                        >
+                            <p className="reportBasicTitle">Устройство:</p>
+                            <p className="reportBasicBody">{reports.device}</p>
                         </div>
                         {/*<Link to={`/reports/${reports._id}/edit`}>Edit</Link>*/}
                     </div>

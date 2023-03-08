@@ -24,15 +24,15 @@ const Reports = (props: Props) => {
         e.preventDefault();
         const form = e.target;
         const query = form.search.value;
-        const isLatest = form.latest.checked;
+        // const isLatest = form.latest.checked;
 
         const params = new URLSearchParams();
         if(query.length){
             params.set("report", query);
         }
-        if(isLatest){
-            params.set("latest", isLatest.toString());
-        }
+        // if(isLatest){
+        //     params.set("latest", isLatest.toString());
+        // }
 
         setSearchParams(params);
 
@@ -56,7 +56,7 @@ const Reports = (props: Props) => {
         const day = date.slice(8, 10);
         const month = date.slice(5, 7);
         const year = date.slice(0, 4);
-        const time = date.slice(11, 16);
+        const time = date.slice(11, 19);
         return `${day}.${month}.${year} ${time}`;
     };
 
@@ -86,12 +86,12 @@ const Reports = (props: Props) => {
 
     return (
         <div className="reports">
-            <form autoComplete="off" onSubmit={handleSubmit}>
-                <input type="search" name="search"/>
-                <input type="submit" value="search"/>
-                <label>
-                    <input type="checkbox" name="latest" />
-                </label>
+            <form className="searchForm" autoComplete="off" onSubmit={handleSubmit}>
+                <input className="searchField" type="search" name="search"/>
+                <input className="searchButton" type="submit" value="Поиск"/>
+                {/*<label>*/}
+                {/*    <input type="checkbox" name="latest" />*/}
+                {/*</label>*/}
             </form>
             {/*<CustomLink to={"new"} children={"Create Report"}/>*/}
             {reports.filter(
@@ -131,10 +131,10 @@ const Reports = (props: Props) => {
                             >
                                 <p className="reportDatetime">{report.date && dateTime(`${report.date}`)}</p>
                                 <p className="reportUsername">·</p>
-                                <p className="reportUsername">{report.userId}</p>
+                                <p className="reportUsername">{report.userEmail}</p>
                             </div>
                             <div>
-                                <p className="reportPriority">{report.priority}</p>
+                                <p className="reportPriority">{report.status}</p>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import {ApiProperty} from "@nestjs/swagger";
+import {Prop} from "@nestjs/mongoose";
 
 export class CreateReportDto {
     @ApiProperty()
@@ -33,4 +34,22 @@ export class CreateReportDto {
 
     @ApiProperty()
     os: string;
+
+    @ApiProperty()
+    date: Date;
+
+    @ApiProperty()
+    platform: string;
+
+    @ApiProperty()
+    versionProduct: string;
+
+    @ApiProperty()
+    status: string;
+
+    @ApiProperty()
+    userImage: string;
+
+    @ApiProperty()
+    userEmail: string;
 }

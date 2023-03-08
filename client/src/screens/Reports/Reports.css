@@ -74,3 +74,34 @@ p {
     padding-top: 5px;
     /* padding: 10px; */
 }
+
+.searchForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 90%;
+}
+
+.searchField {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 90%;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.searchButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    /*width: 90%;*/
+}
