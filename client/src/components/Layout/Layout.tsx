@@ -19,7 +19,7 @@ const Layout = (props: Props) => {
         <>
             <Header/>
             <div className="layout">
-                {userStore.isAuth && location.pathname !== "/" ? <SideBar/> : ""}
+                {userStore.isAuth && location.pathname !== "/" && location.pathname !== "/profile" ? <SideBar/> : ""}
                 {location.pathname === "/" ? <Home/> : <Outlet/>}
             </div>
         </>

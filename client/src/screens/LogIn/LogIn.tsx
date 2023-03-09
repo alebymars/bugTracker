@@ -32,13 +32,14 @@ const LogIn = () => {
 
         const data = await response.json();
         const user = data["_doc"];
+        // console.log("user => ", user);
 
         if (data) {
             dispatch(setUser({
                 id: user._id,
                 email: user.email,
                 role: user.role,
-                profilePicture: user.profilePicture,
+                profilePicture: user.avatar,
                 isAuth: true,
                 token: data.token,
             }));
@@ -46,7 +47,7 @@ const LogIn = () => {
                 id: user._id,
                 email: user.email,
                 role: user.role,
-                profilePicture: user.profilePicture,
+                profilePicture: user.avatar,
                 isAuth: true,
                 token: data.token,
             }));

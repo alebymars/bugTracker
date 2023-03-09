@@ -10,6 +10,7 @@ const ReportView = () => {
     const {id} = useParams();
     const navigate = useNavigate();
     const token = useSelector(state => state.user.token);
+    const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
     const [reports, setReports] = useState<any>(null);
 
     useEffect(() => {

@@ -1,4 +1,6 @@
-import {Link, Navigate, NavLink} from "react-router-dom";
+import React, {useState} from "react";
+import {Link, Navigate, NavLink, useNavigate} from "react-router-dom";
+import {Fade, Menu, MenuItem} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import AppBar from "@mui/material/AppBar";
@@ -20,6 +22,16 @@ const Header = (props: Props) => {
     const storeUser = useSelector(state => state.user);
     const {logout} = useAuth();
 
+    const navigate = useNavigate();
+
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <AppBar style={{
             backgroundColor: "#333333",
@@ -37,7 +49,7 @@ const Header = (props: Props) => {
                 {/*    </Link>*/}
                 {/*</IconButton>*/}
                 <Link to="/">
-                    <BugReportIcon color={"primary"} />
+                    <BugReportIcon color={"inherit"}/>
                 </Link>
                 <Typography variant="h6"
                             component="div" sx={{flexGrow: 1}}>
@@ -72,16 +84,43 @@ const Header = (props: Props) => {
                     //     color: "#cccccc"
                     // }}>Выйти</Button>
                     <Avatar
-                        onMouseEnter={() => {
-                            alert("В разработке")
-                            document.querySelector(".avatarHeader")?.classList.add("avatarHeaderHover")
-                        }}
+                        onClick={handleMenu}
                         className="avatarHeader"
                         // sx={{bgcolor: deepOrange[500], margin: "0 0 0 0"}}
                         alt={storeUser.email}
-                        src="https://w7.pngwing.com/pngs/464/554/png-transparent-account-avatar-profile-user-avatars-icon.png"/>
+                        src={storeUser.profilePicture}/>
                     : ""
                 }
+                <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    sx={{
+                        marginTop: "40px",
+                        // color: "#cccccc",
+                    }}
+                    anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                        vertical: "top",
+                        horizontal: "center",
+                    }}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                    TransitionComponent={Fade}
+                >
+                    <MenuItem
+                        onClick={() => {
+                            navigate("/profile");
+                            handleClose();
+                        }}>Профиль</MenuItem>
+                    <MenuItem onClick={() => {
+                        logout();
+                        handleClose();
+                    }}>Выйти</MenuItem>
+                </Menu>
                 {/*<Button onClick={logout} style={{*/}
                 {/*    color: "#cccccc"*/}
                 {/*}}>Выйти</Button>*/}

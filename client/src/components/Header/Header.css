@@ -28,14 +28,6 @@ a {
     margin-left: auto;
 }
 
-.avatarHeaderHover {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    cursor: pointer;
-}
-
 .avatarHeader:hover {
     cursor: pointer;
 }

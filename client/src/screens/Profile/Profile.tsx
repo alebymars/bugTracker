@@ -10,7 +10,9 @@ const Profile = () => {
         <div className="main">
             {/*<Header title={"Profile"} />*/}
             <div className="blockInfo">
-                <img src={storeUser.profilePicture} alt="profilePicture" width="100px" height="100px" />
+                <img src={storeUser.profilePicture} alt={storeUser.email} width="100px" height="100px" style={{
+                    borderRadius: "50%",
+                }} />
                 <div className="userInfo">
                     <p>email: {storeUser.email}</p>
                     <p>role: {storeUser.role}</p>
