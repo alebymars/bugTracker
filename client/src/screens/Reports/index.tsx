@@ -1,12 +1,11 @@
 import React, {useState, useEffect, useLayoutEffect} from "react";
 import {useDispatch, useSelector} from "../../store";
-import axios from "axios";
 import "./Reports.css";
 import CustomLink from "../../components/CustomLink/CustomLink";
 import {setUser} from "../../store/actions";
 import {useAuth} from "../../hook/useAuth";
 import {Link, useSearchParams} from "react-router-dom";
-import {Button, Chip, Stack, TextField} from "@mui/material";
+import {Chip, Stack} from "@mui/material";
 import CustomSearch from "../../components/CustomSearch/CustomSearch";
 
 interface Props {
@@ -18,9 +17,9 @@ const Reports = (props: Props) => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const reportQuery = searchParams.get("report") || "";
-    const latest = searchParams.get("latest") || "";
+    // const latest = searchParams.get("latest") || "";
 
-    const startsFrom = latest ? 0 : 10;
+    // const startsFrom = latest ? 0 : 10;
 
     const handleSubmit = (e: any) => {
         e.preventDefault();

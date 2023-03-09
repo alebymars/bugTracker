@@ -1,5 +1,7 @@
 .layout {
     display: flex;
     flex-direction: row;
+    /*align-items: center;*/
+    justify-content: center; /*убрать потом, чтобы все не центрировалось в layout*/
     /*min-height: 100vh;*/
 }

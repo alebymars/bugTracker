@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useLocation} from "react-router-dom";
 import {useDispatch} from "../../store";
 import {setUser} from "../../store/actions";
+import "./LogIn.css";
 
 const LogIn = () => {
     const dispatch = useDispatch();
@@ -57,20 +58,23 @@ const LogIn = () => {
 
 
     return (
-        <div>
+        <div className="cardFormLogin">
             {/*<Header title={"LogIn"} />*/}
             <h1>
                 LogIn
             </h1>
-            <form onSubmit={handleLogin}>
-                <label>
-                    Email: <input name="email" type="text" value={email} onChange={e => setEmail(e.target.value)}/>
-                </label>
-                <label>
-                    Password: <input name="password" type="password" value={password}
-                                     onChange={e => setPassword(e.target.value)}/>
-                </label>
-                <button type="submit">LogIn</button>
+            <form autoComplete="off" className="loginForm" onSubmit={handleLogin}>
+                {/*<label>*/}
+                {/*    Email: */}
+                {/*</label>*/}
+                <input className="emailField" name="email" type="text" value={email}
+                       onChange={e => setEmail(e.target.value)}/>
+                {/*<label>*/}
+                {/*    Password: */}
+                {/*</label>*/}
+                <input className="passwordField" name="password" type="password" value={password}
+                       onChange={e => setPassword(e.target.value)}/>
+                <input className="loginButton" type="submit" value="Поиск"/>
             </form>
             {/*{fromPage}*/}
         </div>

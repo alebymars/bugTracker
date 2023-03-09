@@ -69,10 +69,10 @@ const ReportView = () => {
                                 );
                             })}
                         </div>
-                        <p className="reportBold">Фактический результат: <p
-                            className="reportOrdinary">{reports.actualResult}</p></p>
-                        <p className="reportBold">Ожидаемый результат: <p
-                            className="reportOrdinary">{reports.expectedResult}</p></p>
+                        <p className="reportBold">Фактический результат: </p>
+                        <p className="reportOrdinary">{reports.actualResult}</p>
+                        <p className="reportBold">Ожидаемый результат: </p>
+                        <p className="reportOrdinary">{reports.expectedResult}</p>
                         {/*<p>Прикрепленные файлы: (soon...)</p>*/}
                         <hr/>
                         <div
