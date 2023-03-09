@@ -8,9 +8,7 @@ import {Link, useSearchParams} from "react-router-dom";
 import {Chip, Stack} from "@mui/material";
 import CustomSearch from "../../components/CustomSearch/CustomSearch";
 
-interface Props {
-
-}
+interface Props {}
 
 const Reports = (props: Props) => {
     const dispatch = useDispatch();
