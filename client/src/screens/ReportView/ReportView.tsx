@@ -1,9 +1,10 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import EditIcon from "@mui/icons-material/Edit";
 import {useSelector} from "../../store";
 import "./ReportView.css";
+import {Chip, Stack} from "@mui/material";
 
 const ReportView = () => {
     const {id} = useParams();
@@ -28,7 +29,7 @@ const ReportView = () => {
         } catch (error) {
             console.error(error);
         }
-    }, [id]);
+    }, [id, token]);
 
     return (
         <div
@@ -103,11 +104,32 @@ const ReportView = () => {
                             <p className="reportBasicTitle">Теги:</p>
                             {/*<p className="reportBasicBody">{reports.tags}</p>*/}
                             <div className="reportBasicTags">
-                                {reports.tags.map((tags: any) => {
+                                {reports.tags.map((tags: any, index: any) => {
                                     return (
-                                        <p className="reportBasicBgTag">
-                                            <p className="reportBasicBodyLink">{tags}</p>
-                                        </p>
+                                        // <div key={index} className="reportBasicBgTag">
+                                        //     <p className="reportBasicBodyLink">{tags}</p>
+                                        // </div>
+                                        <Stack
+                                            sx={{
+                                                marginLeft: "10px"
+                                            }}
+                                            key={index}
+                                            direction="row"
+                                            spacing={1}
+                                        >
+                                            <Chip
+                                                sx={{
+                                                    backgroundColor: "#E1E3E620",
+                                                    padding: "2px 5px 2px 5px",
+                                                    borderRadius: "5px",
+                                                    // color: "#71AAEB",
+                                                    color: "#E1E3E6",
+                                                    fontSize: "15px",
+                                                }}
+                                                label={tags}
+                                                variant="filled"
+                                            />
+                                        </Stack>
                                     );
                                 })}
                             </div>

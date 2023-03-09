@@ -6,6 +6,7 @@ import CustomLink from "../../components/CustomLink/CustomLink";
 import {setUser} from "../../store/actions";
 import {useAuth} from "../../hook/useAuth";
 import {Link, useSearchParams} from "react-router-dom";
+import {Chip, Stack} from "@mui/material";
 
 interface Props {
 
@@ -27,7 +28,7 @@ const Reports = (props: Props) => {
         // const isLatest = form.latest.checked;
 
         const params = new URLSearchParams();
-        if(query.length){
+        if (query.length) {
             params.set("report", query);
         }
         // if(isLatest){
@@ -87,7 +88,7 @@ const Reports = (props: Props) => {
     return (
         <div className="reports">
             <form className="searchForm" autoComplete="off" onSubmit={handleSubmit}>
-                <input className="searchField" type="search" name="search"/>
+                <input className="searchField" type="search" name="search" defaultValue={reportQuery}/>
                 <input className="searchButton" type="submit" value="Поиск"/>
                 {/*<label>*/}
                 {/*    <input type="checkbox" name="latest" />*/}
@@ -101,17 +102,28 @@ const Reports = (props: Props) => {
                     <div className="cardReport" key={report._id}>
                         <Link to={`/reports/${report._id}`} className="reportTitle">{report.title}</Link>
                         <div className="tags">
-                            {report.tags.map((item: any) => {
+                            {report.tags.map((item: any, index: any) => {
                                 return (
-                                    <p style={{
-                                        marginRight: "5px",
-                                        backgroundColor: "#E1E3E620",
-                                        padding: "2px 5px 2px 5px",
-                                        borderRadius: "5px",
-                                        color: "white"
-                                    }} key={item}>
-                                        {item}
-                                    </p>
+                                    <Stack
+                                        sx={{
+                                            marginRight: "10px"
+                                        }}
+                                        key={index}
+                                        direction="row"
+                                        spacing={1}
+                                    >
+                                        <Chip
+                                            sx={{
+                                                backgroundColor: "#E1E3E620",
+                                                padding: "2px 5px 2px 5px",
+                                                borderRadius: "5px",
+                                                color: "#E1E3E6"
+                                                // color: "#71AAEB"
+                                            }}
+                                            label={item}
+                                            variant="filled"
+                                        />
+                                    </Stack>
                                 );
                             })}
                         </div>

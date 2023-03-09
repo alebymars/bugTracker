@@ -42,6 +42,14 @@ const LogIn = () => {
                 isAuth: true,
                 token: data.token,
             }));
+            localStorage.setItem("user", JSON.stringify({
+                id: user._id,
+                email: user.email,
+                role: user.role,
+                profilePicture: user.profilePicture,
+                isAuth: true,
+                token: data.token,
+            }));
             navigate(fromPage);
         }
     };

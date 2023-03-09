@@ -28,6 +28,8 @@ export function useAuth() {
             isAuth: false,
             token: "",
         }));
+        localStorage.removeItem("user");
+        localStorage.removeItem("context-store");
         navigate("/", {replace: true});
         return true;
     };
