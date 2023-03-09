@@ -3,7 +3,7 @@ import * as actions from "./actions";
 
 type ActionsTypes = ActionTypes<typeof actions>;
 
-export const {StoreProvider, useSelector, useDispatch} = createStore(
+export const {StoreProvider, useSelector, useDispatch, isRestored} = createStore(
     {
         user: {
             id: "",

@@ -6,7 +6,8 @@ import CustomLink from "../../components/CustomLink/CustomLink";
 import {setUser} from "../../store/actions";
 import {useAuth} from "../../hook/useAuth";
 import {Link, useSearchParams} from "react-router-dom";
-import {Chip, Stack} from "@mui/material";
+import {Button, Chip, Stack, TextField} from "@mui/material";
+import CustomSearch from "../../components/CustomSearch/CustomSearch";
 
 interface Props {
 
@@ -87,14 +88,7 @@ const Reports = (props: Props) => {
 
     return (
         <div className="reports">
-            <form className="searchForm" autoComplete="off" onSubmit={handleSubmit}>
-                <input className="searchField" type="search" name="search" defaultValue={reportQuery}/>
-                <input className="searchButton" type="submit" value="Поиск"/>
-                {/*<label>*/}
-                {/*    <input type="checkbox" name="latest" />*/}
-                {/*</label>*/}
-            </form>
-            {/*<CustomLink to={"new"} children={"Create Report"}/>*/}
+            <CustomSearch reportQuery={reportQuery} handleSubmit={handleSubmit}/>
             {reports.filter(
                 (report: any) => report.title.toLowerCase().includes(reportQuery.toLowerCase())
             ).map((report: any) => {
